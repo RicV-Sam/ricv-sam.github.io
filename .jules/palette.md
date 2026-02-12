@@ -1,7 +1,9 @@
-## 2025-05-14 - Redundancy in Static Landing Pages
-**Learning:** Static landing pages often have "Coming Soon" or "Roadmap" sections that can easily become outdated or redundant as the site grows. This creates cognitive load and confusion for users who see the same items in both "current" and "future" lists.
-**Action:** Always cross-reference "Coming Soon" sections with existing content during UX audits to ensure they provide actual forward-looking value rather than duplicating current features.
+# UX & Accessibility Journal - Palette 🎨
 
-## 2025-05-14 - Skip Link implementation in minimalist designs
-**Learning:** For sites with minimal navigation, a skip-to-content link is still essential for accessibility, even if the "main content" isn't deep. It establishes a consistent pattern for power users.
-**Action:** Implement skip links even on relatively short pages to maintain accessibility standards and ensure keyboard users can bypass the header/nav predictably.
+## 2026-02-12 - Site-wide Consistency & SEO Transitions
+**Learning:** When refactoring a static site from a flat structure to a nested one, maintaining visual consistency across pages is crucial for the "app-like" feel. Using Meta Refresh + Canonical links is the best way to handle SEO during such transitions when a backend redirect (301) isn't available.
+**Action:** Always check for existing indexing (Google verification) and implement a transition strategy (redirects + sitemap update) when changing file structures.
+
+## 2026-02-11 - Speculative Prefetching
+**Learning:** For static sites, `link rel="prefetch"` significantly reduces perceived latency for navigation between pages.
+**Action:** Keep prefetch links updated when reorganizing file structures.
