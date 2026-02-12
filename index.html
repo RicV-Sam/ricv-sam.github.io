@@ -21,6 +21,22 @@ background: #f4f7fb;
 color: #222;
 }
 
+.skip-link {
+position: absolute;
+top: -50px;
+left: 0;
+background: #0a4da3;
+color: white;
+padding: 10px;
+z-index: 100;
+transition: top 0.2s;
+text-decoration: none;
+}
+
+.skip-link:focus {
+top: 0;
+}
+
 header {
 background: #0a4da3;
 color: white;
@@ -39,6 +55,18 @@ color: white;
 margin: 0 15px;
 text-decoration: none;
 font-weight: bold;
+border-bottom: 2px solid transparent;
+transition: border-bottom 0.2s;
+}
+
+nav a:hover, nav a:focus-visible {
+border-bottom: 2px solid white;
+outline: none;
+}
+
+a:focus-visible {
+outline: 3px solid #ffcc00;
+outline-offset: 2px;
 }
 
 main {
@@ -66,25 +94,27 @@ margin-top: 40px;
 </head>
 
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header>
 <h1>Budget Holidays Hub</h1>
 <p>Helping you travel more and spend less</p>
 </header>
 
-<nav>
-<a href="#">Home</a>
+<nav aria-label="Main navigation">
+<a href="#" aria-current="page">Home</a>
 <a href="#">About</a>
 <a href="#">Contact</a>
 </nav>
 
-<main>
+<main id="main-content">
 <div class="card">
 <h2>Budget Holiday Guides</h2>
 
 <ul>
 <li><a href="spain-budget-holidays.html">Cheap Spain Holidays From The UK</a></li>
 <li><a href="cheapest-time-to-book-flights-uk.html">Cheapest Time To Book Flights From The UK</a></li>
+<li><a href="cheap-all-inclusive-holidays-uk.html">Cheap All Inclusive Holidays From The UK</a></li>
 <li><a href="budget-family-beach-holidays-europe.html">Budget Family Beach Holidays In Europe</a></li>
 <li><a href="last-minute-holiday-deals-strategy.html">Last Minute Holiday Deals Strategy</a></li>
 <li><a href="cheap-all-inclusive-holidays-uk.html">Cheap All Inclusive Holidays From The UK</a></li>
@@ -99,9 +129,9 @@ margin-top: 40px;
 
 <div class="card">
 <h3>Coming Soon</h3>
-<p>✔ Cheap Spain holidays guide</p>
-<p>✔ Budget family beach holidays</p>
-<p>✔ Cheapest time to fly from UK</p>
+<p>✔ Budget City Breaks Guide</p>
+<p>✔ Best Travel Insurance Tips</p>
+<p>✔ Group Travel Saving Strategies</p>
 </div>
 
 </main>
