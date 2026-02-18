@@ -7,3 +7,7 @@
 ## 2026-02-11 - Speculative Prefetching
 **Learning:** For static sites, `link rel="prefetch"` significantly reduces perceived latency for navigation between pages.
 **Action:** Keep prefetch links updated when reorganizing file structures.
+
+## 2026-02-18 - Semantic Breadcrumbs and Focus Visibility
+**Learning:** Using `<nav aria-label="Breadcrumb">` with an `<ol>` is the gold standard for accessible breadcrumbs. Combined with `aria-current="page"` and CSS-based separators, it provides a clean, screen-reader-friendly experience without cluttering the UI. Additionally, always ensuring `a:focus-visible` is styled with enough `outline-offset` (4px+) prevents focus rings from overlapping with other visual cues like active state borders.
+**Action:** Always prefer semantic `<nav>` for breadcrumbs and avoid `outline: none` on interactive elements.
