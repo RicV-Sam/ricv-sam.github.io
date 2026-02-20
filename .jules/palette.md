@@ -15,3 +15,7 @@
 ## 2026-02-19 - Heading Hierarchy and Semantic Lists
 **Learning:** For static sites, maintaining a single `<h1>` per page is crucial for accessibility. On subpages, the site title in the header should be a `<div>` (styled to match the home `<h1>`) so that the article title can be the primary heading. Additionally, itemized content should always use semantic `<ul>` lists instead of formatted `<p>` tags for better screen reader support.
 **Action:** Always audit heading levels on subpages and use semantic lists for group items.
+
+## 2026-02-20 - Navigation Flow and Touch Accessibility
+**Learning:** For mobile accessibility, navigation links should have a large enough touch target (at least 44x44px). Using `display: inline-block` and `padding` on `<a>` tags is an effective way to achieve this without changing the layout. Additionally, adding a "Back to Home/Guides" link at the end of articles significantly improves the navigation loop for users who have finished reading.
+**Action:** Always ensure nav links have adequate padding for touch targets and provide clear navigation "next steps" at the end of content.

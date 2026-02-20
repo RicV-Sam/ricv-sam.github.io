@@ -2,6 +2,10 @@ html {
     scroll-behavior: smooth;
 }
 
+a {
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -52,12 +56,19 @@ nav[aria-label="Main navigation"] {
 }
 
 nav[aria-label="Main navigation"] a {
+    display: inline-block;
     color: white;
-    margin: 0 15px;
+    padding: 10px 15px;
+    margin: 0 5px;
     text-decoration: none;
     font-weight: bold;
     border-bottom: 2px solid transparent;
-    transition: border-bottom 0.2s;
+    transition: border-bottom 0.2s, background-color 0.2s;
+    border-radius: 4px;
+}
+
+nav[aria-label="Main navigation"] a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 nav[aria-label="Main navigation"] a:hover,
@@ -114,6 +125,19 @@ main {
 }
 
 .breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 0;
+    color: #0a4da3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
     text-decoration: underline;
 }
 
