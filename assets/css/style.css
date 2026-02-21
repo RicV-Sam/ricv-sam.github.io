@@ -135,10 +135,30 @@ main {
     color: #0a4da3;
     text-decoration: none;
     font-weight: bold;
+    transition: transform 0.2s ease-in-out;
 }
 
 .back-link:hover {
+    transform: translateX(-5px);
     text-decoration: underline;
+}
+
+.reading-time {
+    font-size: 0.9em;
+    color: #666;
+    margin: -10px 0 20px 0;
+}
+
+.coming-soon-badge {
+    background: #e1effe;
+    color: #1e429f;
+    font-size: 0.7em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 footer {
