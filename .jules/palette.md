@@ -19,3 +19,7 @@
 ## 2026-02-20 - Navigation Flow and Touch Accessibility
 **Learning:** For mobile accessibility, navigation links should have a large enough touch target (at least 44x44px). Using `display: inline-block` and `padding` on `<a>` tags is an effective way to achieve this without changing the layout. Additionally, adding a "Back to Home/Guides" link at the end of articles significantly improves the navigation loop for users who have finished reading.
 **Action:** Always ensure nav links have adequate padding for touch targets and provide clear navigation "next steps" at the end of content.
+
+## 2026-02-21 - Link Affordance & Micro-animations
+**Learning:** When adding micro-animations (like `translateX` or `scale`) to links on hover, it's vital to preserve or enhance traditional link affordances such as `text-decoration: underline`. Removing standard cues in favor of animations can degrade accessibility for users who rely on consistent interactive patterns.
+**Action:** Always test hover states to ensure they enhance, rather than replace, established accessibility indicators.
