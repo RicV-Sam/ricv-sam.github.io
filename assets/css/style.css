@@ -161,3 +161,22 @@ footer {
         margin: 5px 10px;
     }
 }
+
+.coming-soon-badge {
+    background-color: #e1effe;
+    color: #0a4da3;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.reading-time {
+    color: #555;
+    font-size: 0.85em;
+    margin: 5px 0 15px;
+}
