@@ -23,3 +23,7 @@
 ## 2026-03-05 - Directional Parity for Mouse and Keyboard
 **Learning:** Micro-interactions like directional shifts (e.g., `translateX`) on "back" links provide strong spatial cues. For these to be accessible, the animation must be applied to both `:hover` and `:focus-visible`. Additionally, transitions for these specific transforms should be scoped to the class rather than applied globally to avoid unexpected behavior on other interactive elements.
 **Action:** Always apply directional animations to both hover and focus-visible states and scope transitions to the specific component class.
+
+## 2026-03-06 - Content Expectations and Status Awareness
+**Learning:** Providing immediate visual cues for content status (e.g., "Coming Soon" badges) and reading time estimates significantly improves user trust and helps manage expectations. Correcting heading hierarchy ensures these new elements are discovered in a logical order by assistive technologies.
+**Action:** Always include status badges for upcoming content and provide reading time indicators for educational articles to improve engagement and accessibility.
