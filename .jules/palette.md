@@ -19,3 +19,7 @@
 ## 2026-02-20 - Navigation Flow and Touch Accessibility
 **Learning:** For mobile accessibility, navigation links should have a large enough touch target (at least 44x44px). Using `display: inline-block` and `padding` on `<a>` tags is an effective way to achieve this without changing the layout. Additionally, adding a "Back to Home/Guides" link at the end of articles significantly improves the navigation loop for users who have finished reading.
 **Action:** Always ensure nav links have adequate padding for touch targets and provide clear navigation "next steps" at the end of content.
+
+## 2026-03-05 - Directional Parity for Mouse and Keyboard
+**Learning:** Micro-interactions like directional shifts (e.g., `translateX`) on "back" links provide strong spatial cues. For these to be accessible, the animation must be applied to both `:hover` and `:focus-visible`. Additionally, transitions for these specific transforms should be scoped to the class rather than applied globally to avoid unexpected behavior on other interactive elements.
+**Action:** Always apply directional animations to both hover and focus-visible states and scope transitions to the specific component class.
