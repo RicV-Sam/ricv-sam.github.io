@@ -1,0 +1,15 @@
+name: IndexNow
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for GitHub Pages deploy
+        run: sleep 120
+      - name: Submit sitemap to IndexNow
+        uses: bojieyang/indexnow-action@v2
+        with:
+          sitemap-location: "https://ricv-sam.github.io/sitemap.xml"
+          key: ${{ secrets.INDEXNOW_KEY }}
