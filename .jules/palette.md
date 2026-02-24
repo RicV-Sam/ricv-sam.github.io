@@ -27,3 +27,7 @@
 ## 2026-03-06 - Content Expectations and Status Awareness
 **Learning:** Providing immediate visual cues for content status (e.g., "Coming Soon" badges) and reading time estimates significantly improves user trust and helps manage expectations. Correcting heading hierarchy ensures these new elements are discovered in a logical order by assistive technologies.
 **Action:** Always include status badges for upcoming content and provide reading time indicators for educational articles to improve engagement and accessibility.
+
+## 2026-03-07 - Accessible Breadcrumb Implementation
+**Learning:** Adding semantic breadcrumbs to subpages in a static site significantly improves wayfinding and accessibility. Using a `<nav aria-label="Breadcrumb">` with an `<ol>` and `aria-current="page"` is the preferred pattern. Separators should be added via CSS pseudo-elements (`::after`) to avoid screen reader clutter.
+**Action:** Always implement semantic breadcrumbs on nested pages and ensure they are styled for both visual clarity and accessibility.
