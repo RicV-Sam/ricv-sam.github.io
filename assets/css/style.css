@@ -351,14 +351,18 @@ header {
 }
 
 .back-link {
-    color: #1f6fcc;
-    text-decoration: none;
-    font-weight: 700;
+    display: inline-block;
+    color: var(--primary);
+    text-decoration: underline;
+    font-weight: 500;
+    margin-top: 2rem;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .back-link:hover,
 .back-link:focus-visible {
-    text-decoration: underline;
+    color: var(--primary-dark);
+    transform: translateX(-5px);
 }
 
 .site-footer {
