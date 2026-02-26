@@ -4,8 +4,9 @@
     --surface-soft: #f5f7fb;
     --text: #1c2739;
     --muted: #5f7798;
-    --primary: #2f7fd7;
-    --primary-dark: #256cc0;
+    --primary: #0a4da3;
+    --primary-dark: #083d82;
+    --primary-light: #e1effe;
     --border: #d8dee9;
     --shadow: 0 4px 10px rgba(28, 39, 57, 0.07);
 }
@@ -94,12 +95,13 @@ body {
 .nav-links a:focus-visible,
 .nav-links a[aria-current="page"] {
     color: var(--text);
+    background-color: rgba(10, 77, 163, 0.05);
 }
 
 a:focus-visible,
 button:focus-visible {
     outline: 3px solid #ffcd47;
-    outline-offset: 3px;
+    outline-offset: 4px;
 }
 
 main {
@@ -127,7 +129,7 @@ main {
 
 .eyebrow {
     margin: 0;
-    color: #2271d7;
+    color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 500;
@@ -208,7 +210,8 @@ main {
 }
 
 .guide-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(28, 39, 57, 0.12);
 }
 
 .guide-card-icon {
@@ -246,23 +249,24 @@ main {
 }
 
 .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 7px 18px;
-    border-radius: 999px;
-    background: #e4e8ef;
-    color: #697687;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
     font-weight: 700;
-    font-size: clamp(0.82rem, 0.77rem + 0.2vw, 1.18rem);
+    text-transform: uppercase;
+    display: inline-block;
 }
 
 .guide-card.coming {
-    opacity: 0.44;
+    opacity: 0.6;
     cursor: default;
 }
 
 .guide-card.coming:hover {
     transform: none;
+    box-shadow: var(--shadow);
 }
 
 .breadcrumb {
@@ -346,8 +350,9 @@ header {
 }
 
 .reading-time {
-    margin: 8px 0 18px;
-    color: #5d728f;
+    margin: 5px 0 15px;
+    color: #555;
+    font-size: 0.85em;
 }
 
 .back-link {
