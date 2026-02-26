@@ -11,3 +11,7 @@
 ## 2024-05-14 - Animation Performance and Affordance
 **Learning:** Transitioning `text-decoration` is ineffective as it is a discrete property in most browsers; focus transitions on continuous properties like `transform` and `color`. Additionally, always preserve `text-decoration: underline` on links to maintain accessibility affordance, even when adding directional animations like `translateX`.
 **Action:** Exclude `text-decoration` from CSS transition lists and ensure directional cues (like "Back" links) use `display: inline-block` to support transforms.
+
+## 2024-05-15 - Accessibility and Minimal Navigation Updates
+**Learning:** When addressing UX inconsistencies in navigation labels (e.g., "Contact" pointing to "Coming Soon"), prioritize preserving anchor IDs (e.g., `id="contact"`) to avoid breaking deep links from non-updated pages, especially when constrained by a 50-line change limit. High-contrast colors (e.g., `#0a4da3`) and increased focus offsets (`4px`) significantly improve accessibility without requiring complex layout changes.
+**Action:** Update navigation labels while maintaining legacy IDs for compatibility; use global CSS variables to propagate accessibility improvements site-wide with minimal file edits.
