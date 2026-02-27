@@ -15,3 +15,7 @@
 ## 2024-05-15 - Accessibility and Minimal Navigation Updates
 **Learning:** When addressing UX inconsistencies in navigation labels (e.g., "Contact" pointing to "Coming Soon"), prioritize preserving anchor IDs (e.g., `id="contact"`) to avoid breaking deep links from non-updated pages, especially when constrained by a 50-line change limit. High-contrast colors (e.g., `#0a4da3`) and increased focus offsets (`4px`) significantly improve accessibility without requiring complex layout changes.
 **Action:** Update navigation labels while maintaining legacy IDs for compatibility; use global CSS variables to propagate accessibility improvements site-wide with minimal file edits.
+
+## 2024-05-16 - Navigation Touch Targets and Interaction Scope
+**Learning:** Increasing touch targets for navigation links (`display: inline-block` + `padding`) significantly improves mobile usability and accessibility. However, stay focused: implement exactly ONE micro-UX improvement per PR. Bundling multiple distinct enhancements (e.g., header, footer, and card animations) complicates review and risks violating scope constraints.
+**Action:** Prioritize a single high-impact area (like the main navigation) for polish and ensure all temporary files (like `server.log`) are deleted before submission.
