@@ -31,3 +31,7 @@
 ## 2026-03-07 - Accessible Breadcrumb Implementation
 **Learning:** Adding semantic breadcrumbs to subpages in a static site significantly improves wayfinding and accessibility. Using a `<nav aria-label="Breadcrumb">` with an `<ol>` and `aria-current="page"` is the preferred pattern. Separators should be added via CSS pseudo-elements (`::after`) to avoid screen reader clutter.
 **Action:** Always implement semantic breadcrumbs on nested pages and ensure they are styled for both visual clarity and accessibility.
+
+## 2026-03-08 - Solving Sticky Header Content Occlusion
+**Learning:** Sticky headers often obscure target content when navigating via anchor links (`#id`). The CSS `scroll-padding-top` property on the `html` element is the cleanest way to fix this without adding hacky margins or invisible anchor offsets. It must be adjusted across breakpoints if the header height changes (e.g., when navigation items wrap on mobile).
+**Action:** Always implement `scroll-padding-top` when using `position: sticky` headers, ensuring the value matches the header's height at each responsive breakpoint.
