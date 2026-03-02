@@ -213,9 +213,11 @@ main {
     display: flex;
     flex-direction: column;
     gap: 14px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.guide-card:hover {
+.guide-card:hover,
+.guide-card:focus-visible {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(28, 39, 57, 0.12);
 }
