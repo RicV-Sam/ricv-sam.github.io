@@ -229,6 +229,21 @@ main {
     box-shadow: 0 8px 20px rgba(28, 39, 57, 0.12);
 }
 
+.guide-card-cta {
+    display: inline-block;
+    margin-top: auto;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.guide-card:hover .guide-card-cta,
+.guide-card:focus-visible .guide-card-cta {
+    transform: translateX(5px);
+    color: var(--primary-dark);
+}
+
 .guide-card-icon {
     width: 62px;
     height: 62px;
