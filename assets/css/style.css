@@ -410,6 +410,21 @@ header {
     font-size: clamp(1.06rem, 0.99rem + 0.3vw, 1.2rem);
 }
 
+.card p a,
+.card li a {
+    color: var(--primary);
+    text-decoration: underline;
+    overflow-wrap: break-word;
+    transition: color 0.2s ease-in-out;
+}
+
+.card p a:hover,
+.card p a:focus-visible,
+.card li a:hover,
+.card li a:focus-visible {
+    color: var(--primary-dark);
+}
+
 .reading-time {
     margin: 5px 0 15px;
     color: #555;
