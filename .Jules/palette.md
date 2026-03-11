@@ -5,3 +5,7 @@
 ## 2025-05-22 - [Interaction] Interactive Card Accessibility
 **Learning:** For interactive cards (like `.guide-card`), using `:focus-visible` ensures that keyboard users receive the same visual feedback (elevation/shadow) as mouse users without cluttering the UI for click interactions.
 **Action:** Always pair hover effects with `:focus-visible` for cards and complex interactive elements to maintain accessibility parity.
+
+## 2025-05-23 - [Interaction] Tactile Feedback for Primary CTAs
+**Learning:** Adding an `:active` state (e.g., `transform: scale(0.98)`) to primary call-to-action buttons provides a satisfying "pressed" feeling that confirms user intent. However, when using CSS transitions, avoid transitioning `linear-gradient` backgrounds as they do not interpolate smoothly; focus on transforming the element or changing solid colors instead.
+**Action:** Include tactile `:active` states for key interaction points and ensure transitions are limited to properties that interpolate cleanly (transform, opacity, color).
