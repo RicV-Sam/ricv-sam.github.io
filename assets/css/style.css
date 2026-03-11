@@ -178,10 +178,16 @@ main {
     text-decoration: none;
     color: #fff;
     background: linear-gradient(135deg, var(--primary), #2d89e6);
+    transition: transform 0.2s ease;
 }
 
-.hero-cta:hover {
+.hero-cta:hover,
+.hero-cta:focus-visible {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+}
+
+.hero-cta:active {
+    transform: scale(0.98);
 }
 
 .hero-cta span {
@@ -189,7 +195,8 @@ main {
     transition: transform 0.2s ease;
 }
 
-.hero-cta:hover span {
+.hero-cta:hover span,
+.hero-cta:focus-visible span {
     transform: translateY(3px);
 }
 
