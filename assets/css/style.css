@@ -406,6 +406,17 @@ header {
     font-size: clamp(1.8rem, 1.4rem + 1vw, 2.6rem);
 }
 
+.article-layout .card > img {
+    width: 100%;
+    height: auto;
+    max-height: 380px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    aspect-ratio: 16 / 9;
+}
+
 .card h2 {
     margin-top: 26px;
     font-size: clamp(1.4rem, 1.2rem + 0.6vw, 1.9rem);
