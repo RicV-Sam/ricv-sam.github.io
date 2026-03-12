@@ -412,9 +412,40 @@ header {
 }
 
 .card p,
-.card li {
+.card li,
+.card td {
     color: #384b67;
     font-size: clamp(1.06rem, 0.99rem + 0.3vw, 1.2rem);
+}
+
+.card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.card tr {
+    border-bottom: 1px solid var(--border);
+}
+
+.card tr:last-child {
+    border-bottom: none;
+}
+
+.card td {
+    padding: 12px 8px;
+    vertical-align: top;
+}
+
+.card td:first-child {
+    font-weight: 600;
+    color: var(--muted);
+    width: 40%;
+    padding-left: 0;
+}
+
+.card td:last-child {
+    padding-right: 0;
 }
 
 .card p a,
