@@ -74,6 +74,11 @@ body {
     font-weight: 800;
     text-decoration: none;
     color: var(--text);
+    transition: transform 0.2s ease-in-out;
+}
+
+.brand:active {
+    transform: scale(0.98);
 }
 
 .brand-icon {
@@ -103,7 +108,12 @@ body {
     display: inline-block;
     padding: 8px 16px;
     border-radius: 8px;
-    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+        transform 0.2s ease-in-out;
+}
+
+.nav-links a:active {
+    transform: scale(0.98);
 }
 
 .nav-links a:hover,
@@ -267,6 +277,10 @@ main {
     box-shadow: 0 8px 20px rgba(28, 39, 57, 0.12);
 }
 
+.guide-card:active {
+    transform: translateY(-2px) scale(0.99);
+}
+
 .guide-card-cta {
     display: inline-block;
     margin-top: auto;
@@ -362,7 +376,11 @@ main {
 .breadcrumb li a {
     color: var(--primary);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease-in-out;
+}
+
+.breadcrumb li a:active {
+    transform: scale(0.98);
 }
 
 .breadcrumb li a:hover {
@@ -495,6 +513,10 @@ header {
     transform: translateX(-5px);
 }
 
+.back-link:active {
+    transform: translateX(-5px) scale(0.98);
+}
+
 .site-footer {
     border-top: 1px solid var(--border);
     margin-top: 32px;
@@ -516,6 +538,12 @@ header {
 .site-footer a {
     color: var(--muted);
     text-decoration: none;
+    display: inline-block;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.site-footer a:active {
+    transform: scale(0.98);
 }
 
 .site-footer a:hover,
