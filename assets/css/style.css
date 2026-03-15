@@ -376,6 +376,7 @@ main {
 .breadcrumb li a {
     color: var(--primary);
     text-decoration: none;
+    display: inline-block;
     transition: color 0.2s ease, transform 0.2s ease-in-out;
 }
 
