@@ -451,30 +451,51 @@ header {
 .card table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 2rem 0;
 }
 
-.card tr {
-    border-bottom: 1px solid var(--border);
+.card thead tr {
+    background-color: var(--primary);
+    color: white;
 }
 
-.card tr:last-child {
-    border-bottom: none;
-}
-
+.card th,
 .card td {
-    padding: 12px 8px;
+    padding: 12px;
+    text-align: left;
+    border: 1px solid var(--border);
     vertical-align: top;
+}
+
+.card tbody tr {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.card tbody tr:hover {
+    background-color: rgba(10, 77, 163, 0.04);
 }
 
 .card td:first-child {
     font-weight: 600;
     color: var(--muted);
+}
+
+/* Quick Facts Table override */
+section.card table td {
+    border: none;
+    border-bottom: 1px solid var(--border);
+}
+
+section.card table tr:last-child td {
+    border-bottom: none;
+}
+
+section.card table td:first-child {
     width: 40%;
     padding-left: 0;
 }
 
-.card td:last-child {
+section.card table td:last-child {
     padding-right: 0;
 }
 
