@@ -13,3 +13,7 @@
 ## 2025-05-24 - [UX] Scanable Data Tables
 **Learning:** Data tables within content cards (like 'Quick Facts') require explicit styling to maintain scanability. Using a fixed percentage width for the label column (e.g., 40%) ensures a consistent vertical alignment for values across different guides, even on mobile, preventing jagged reading lines.
 **Action:** Style `.card table` with `width: 100%`, `border-collapse: collapse`, and apply `border-bottom` to `tr` elements. Use `font-weight: 600` and `var(--muted)` for the first column to create a clear visual hierarchy.
+
+## 2026-03-16 - [UX] Standardized Data Tables
+**Learning:** Moving repetitive inline styles from complex data tables to a global CSS system improves maintainability and consistency. Using semantic `<thead>` and `<tbody>` tags allows for targeted styling, such as themed headers and row hover highlights (`rgba(10, 77, 163, 0.04)`), which significantly improves scanability for multi-column data.
+**Action:** Implement global table styles for `.card` components using `thead` for headers and `tbody tr:hover` for row tracking. Use CSS specificity (e.g., `section.card table`) to handle simpler key-value tables that require a more minimalist appearance.
