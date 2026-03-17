@@ -633,6 +633,46 @@ section.card table td:last-child {
     font-size: 0.85em;
 }
 
+.quick-nav {
+    margin: 2rem 0;
+    padding: 1.25rem;
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.quick-nav strong {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+.quick-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+}
+
+.quick-nav a {
+    color: var(--primary);
+    text-decoration: underline;
+    font-weight: 600;
+    display: inline-block;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.quick-nav a:hover,
+.quick-nav a:focus-visible {
+    color: var(--primary-dark);
+}
+
+.quick-nav a:active {
+    transform: scale(0.98);
+}
+
 .back-link {
     display: inline-block;
     color: var(--primary);
