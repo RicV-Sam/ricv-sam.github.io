@@ -17,3 +17,7 @@
 ## 2026-03-16 - [UX] Standardized Data Tables
 **Learning:** Moving repetitive inline styles from complex data tables to a global CSS system improves maintainability and consistency. Using semantic `<thead>` and `<tbody>` tags allows for targeted styling, such as themed headers and row hover highlights (`rgba(10, 77, 163, 0.04)`), which significantly improves scanability for multi-column data.
 **Action:** Implement global table styles for `.card` components using `thead` for headers and `tbody tr:hover` for row tracking. Use CSS specificity (e.g., `section.card table`) to handle simpler key-value tables that require a more minimalist appearance.
+
+## 2026-03-17 - [UX] Standardized Quick Navigation
+**Learning:** Refactoring inline-styled navigation blocks into a standardized global component (like `.quick-nav`) ensures consistent application of themed variables (e.g., `var(--surface-soft)`) and tactile feedback states across the repository.
+**Action:** Implement `.quick-nav` with `var(--surface-soft)` background, `1.25rem` padding, and `:active { transform: scale(0.98); }` for all in-article navigation links to provide a cohesive interactive experience.
