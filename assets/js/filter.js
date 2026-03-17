@@ -11,9 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = card.querySelector('h3').textContent.toLowerCase();
             const description = card.querySelector('p').textContent.toLowerCase();
             const category = card.dataset.category;
+            const filterTags = card.dataset.filterTags ? card.dataset.filterTags.split(' ') : [];
 
             const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
-            const matchesFilter = activeFilter === 'all' || category === activeFilter;
+
+            let matchesFilter = false;
+            if (activeFilter === 'all') {
+                matchesFilter = true;
+            } else if (category === activeFilter) {
+                matchesFilter = true;
+            } else if (filterTags.includes(activeFilter)) {
+                matchesFilter = true;
+            }
 
             if (matchesSearch && matchesFilter) {
                 card.style.display = 'flex';

@@ -288,11 +288,28 @@ main {
     pointer-events: none;
 }
 
+.filter-tabs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .filter-tabs {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+}
+
+.filter-tabs.secondary-filters .filter-btn {
+    background: var(--surface-muted);
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.filter-tabs.secondary-filters .filter-btn.active {
+    background: var(--primary);
+    color: white;
 }
 
 .filter-btn {
