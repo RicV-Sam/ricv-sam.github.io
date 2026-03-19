@@ -471,6 +471,35 @@ main {
 .badge-city { background: #e0f2fe; color: #075985; }
 .badge-beach { background: #fef3c7; color: #92400e; }
 
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--muted);
+}
+
+.no-results-icon {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.no-results p {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.no-results p + p {
+    margin-top: 8px;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
 .guide-card.coming {
     opacity: 0.6;
     cursor: default;
