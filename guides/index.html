@@ -62,7 +62,7 @@
 
     <section id="hub-guides" class="section" aria-labelledby="hub-title">
         <h2 id="hub-title">🔥 Start Here: Best Budget Travel Guides</h2>
-        <div class="guides-grid">
+        <div class="guides-grid" id="hub-guides-grid">
 <a class="guide-card" data-category="europe" data-filter-tags="top-choice europe" href="/guides/cheapest-holiday-destinations-from-uk-2026/">
 <div class="guide-card-image">
 <img alt="European holiday destination" loading="lazy" src="/assets/images/spain-budget-travel.jpg"/>
@@ -141,23 +141,23 @@
             </div>
             <div class="filter-tabs-wrapper">
                 <div class="filter-tabs" role="tablist" aria-label="Filter guides by region">
-                    <button class="filter-btn active" data-filter="all">All Destinations</button>
-                    <button class="filter-btn" data-filter="europe">Europe</button>
-                    <button class="filter-btn" data-filter="asia">Asia</button>
-                    <button class="filter-btn" data-filter="africa">Africa</button>
-                    <button class="filter-btn" data-filter="americas">Americas</button>
-                    <button class="filter-btn" data-filter="middle-east">Middle East</button>
+                    <button class="filter-btn active" role="tab" aria-selected="true" aria-controls="all-guides-grid" data-filter="all">All Destinations</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="europe">Europe</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="asia">Asia</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="africa">Africa</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="americas">Americas</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="middle-east">Middle East</button>
                 </div>
                 <div class="filter-tabs secondary-filters" role="tablist" aria-label="Filter guides by type">
-                    <button class="filter-btn" data-filter="top-choice">Top Picks</button>
-                    <button class="filter-btn" data-filter="cheapest">Cheapest</button>
-                    <button class="filter-btn" data-filter="beach">Beach</button>
-                    <button class="filter-btn" data-filter="city-break">City Breaks</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="top-choice">Top Picks</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="cheapest">Cheapest</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="beach">Beach</button>
+                    <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="city-break">City Breaks</button>
                 </div>
             </div>
         </div>
 
-        <div class="guides-grid">
+        <div class="guides-grid" id="all-guides-grid">
 <a href="/guides/cheap-holidays-paris-from-uk/" class="guide-card" data-filter-tags="top-choice city-break europe" data-category="europe">
 
 <div class="guide-card-image">

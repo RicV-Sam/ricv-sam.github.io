@@ -5,13 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filterGuides() {
         const searchTerm = searchInput.value.toLowerCase();
-        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
-        let visibleCount = 0;
-
-        // Find the grid associated with the current section to handle multiple grids if they exist
         const section = searchInput.closest('section');
-        const grid = section ? section.querySelector('.guides-grid') : null;
+        if (!section) return;
 
+        // Get all active filters within the current section (intersection)
+        const activeFilters = Array.from(section.querySelectorAll('.filter-btn.active'))
+            .map(btn => btn.dataset.filter);
+
+        let visibleCount = 0;
+        const grid = section.querySelector('.guides-grid');
         if (!grid) return;
 
         const cards = grid.querySelectorAll('.guide-card');
@@ -24,16 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
 
-            let matchesFilter = false;
-            if (activeFilter === 'all') {
-                matchesFilter = true;
-            } else if (category === activeFilter) {
-                matchesFilter = true;
-            } else if (filterTags.includes(activeFilter)) {
-                matchesFilter = true;
-            }
+            const matchesFilters = activeFilters.every(filter => {
+                if (filter === 'all') return true;
+                return category === filter || filterTags.includes(filter);
+            });
 
-            if (matchesSearch && matchesFilter) {
+            if (matchesSearch && matchesFilters) {
                 card.style.display = 'flex';
                 card.classList.remove('hidden');
                 visibleCount++;
@@ -57,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 messageElement.innerHTML = `
                     <span class="no-results-icon" aria-hidden="true">🔍</span>
                     <p>No guides found matching your criteria.</p>
-                    <p style="font-size: 0.9em; margin-top: 8px; font-weight: 400;">Try adjusting your search or filters.</p>
+                    <span class="no-results-tip">Try adjusting your search or filters.</span>
                 `;
                 container.appendChild(messageElement);
             }
@@ -72,9 +70,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Scope activation to the same tablist to support independent filter categories
+            const tabList = button.closest('[role="tablist"]');
+            const relatedButtons = tabList ? tabList.querySelectorAll('.filter-btn') : [button];
+
+            relatedButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+
             button.classList.add('active');
+            button.setAttribute('aria-selected', 'true');
+
             filterGuides();
+        });
+    });
+
+    // Support keyboard navigation (Arrow Keys) for tablists
+    document.querySelectorAll('[role="tablist"]').forEach(tabList => {
+        tabList.addEventListener('keydown', (e) => {
+            const buttons = Array.from(tabList.querySelectorAll('.filter-btn'));
+            const currentIndex = buttons.indexOf(document.activeElement);
+            if (currentIndex === -1) return;
+
+            let nextIndex;
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                nextIndex = (currentIndex + 1) % buttons.length;
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+            } else if (e.key === 'Home') {
+                nextIndex = 0;
+            } else if (e.key === 'End') {
+                nextIndex = buttons.length - 1;
+            } else {
+                return;
+            }
+
+            e.preventDefault();
+            buttons[nextIndex].focus();
         });
     });
 });
