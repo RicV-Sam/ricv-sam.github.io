@@ -69,7 +69,7 @@
         <h2 id="best-destinations-title">🔥 Best Cheap Holiday Destinations from the UK</h2>
         <p class="section-intro">Our top-picked destinations for maximum value, combining low costs with world-class experiences.</p>
 
-        <div class="guides-grid">
+        <div class="guides-grid" id="featured-guides-grid">
             <a href="/guides/cheap-holidays-paris-from-uk/" class="guide-card">
                 <div class="guide-card-image">
                     <img src="/assets/images/paris-budget-travel.jpg" alt="Paris Eiffel Tower" loading="lazy">
@@ -182,16 +182,16 @@
                 <input type="text" id="guide-search" placeholder="Search destinations, regions or tips..." aria-label="Search guides">
             </div>
             <div class="filter-tabs" role="tablist" aria-label="Filter guides by region">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="europe">Europe</button>
-                <button class="filter-btn" data-filter="asia">Asia</button>
-                <button class="filter-btn" data-filter="africa">Africa</button>
-                <button class="filter-btn" data-filter="americas">Americas</button>
-                <button class="filter-btn" data-filter="middle-east">Middle East</button>
+                <button class="filter-btn active" role="tab" aria-selected="true" aria-controls="all-guides-grid" data-filter="all">All</button>
+                <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="europe">Europe</button>
+                <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="asia">Asia</button>
+                <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="africa">Africa</button>
+                <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="americas">Americas</button>
+                <button class="filter-btn" role="tab" aria-selected="false" aria-controls="all-guides-grid" data-filter="middle-east">Middle East</button>
             </div>
         </div>
 
-        <div class="guides-grid">
+        <div class="guides-grid" id="all-guides-grid">
             <a href="/guides/cheapest-holiday-destinations-from-uk-2026/" class="guide-card" data-category="europe">
                 <div class="guide-card-image">
                     <img src="/assets/images/spain-budget-travel.jpg" alt="European holiday destination" loading="lazy">

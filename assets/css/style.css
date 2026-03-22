@@ -302,7 +302,7 @@ main {
 }
 
 .filter-tabs.secondary-filters .filter-btn {
-    background: var(--surface-muted);
+    background: var(--bg);
     color: var(--muted);
     font-size: 0.9rem;
 }
@@ -325,6 +325,10 @@ main {
 
 .filter-btn:hover {
     background: var(--surface-soft);
+}
+
+.filter-btn:active {
+    transform: scale(0.98);
 }
 
 .filter-btn.active {
@@ -498,6 +502,13 @@ main {
     margin-top: 8px;
     font-size: 1rem;
     font-weight: 400;
+}
+
+.no-results-tip {
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    color: var(--muted);
 }
 
 .guide-card.coming {

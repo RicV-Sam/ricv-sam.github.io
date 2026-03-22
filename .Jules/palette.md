@@ -21,3 +21,7 @@
 ## 2026-03-17 - [UX] Standardized Quick Navigation
 **Learning:** Refactoring inline-styled navigation blocks into a standardized global component (like `.quick-nav`) ensures consistent application of themed variables (e.g., `var(--surface-soft)`) and tactile feedback states across the repository.
 **Action:** Implement `.quick-nav` with `var(--surface-soft)` background, `1.25rem` padding, and `:active { transform: scale(0.98); }` for all in-article navigation links to provide a cohesive interactive experience.
+
+## 2026-03-18 - [Accessibility] Full ARIA Tab Pattern
+**Learning:** Simply adding `role="tab"` and `aria-selected` is insufficient for accessibility; users expect keyboard navigation (Arrow keys, Home, End) to move focus between tabs in a `tablist`. Additionally, when using multiple filter categories (e.g., Region and Type), filter logic should use intersection (AND) to provide the most intuitive results.
+**Action:** Always include keyboard event listeners for `[role="tablist"]` to manage focus, and ensure filter functions can handle multiple active criteria from different categories.
