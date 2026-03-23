@@ -56,8 +56,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="no-results-icon" aria-hidden="true">🔍</span>
                     <p>No guides found matching your criteria.</p>
                     <span class="no-results-tip">Try adjusting your search or filters.</span>
+                    <button class="clear-filters-btn">Clear all filters</button>
                 `;
                 container.appendChild(messageElement);
+
+                const clearBtn = messageElement.querySelector('.clear-filters-btn');
+                clearBtn.addEventListener('click', () => {
+                    if (searchInput) searchInput.value = '';
+
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        if (btn.dataset.filter === 'all') {
+                            btn.classList.add('active');
+                            btn.setAttribute('aria-selected', 'true');
+                        } else {
+                            btn.classList.remove('active');
+                            btn.setAttribute('aria-selected', 'false');
+                        }
+                    });
+
+                    filterGuides();
+                });
             }
         } else if (messageElement) {
             messageElement.remove();
