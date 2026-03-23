@@ -29,3 +29,7 @@
 ## 2026-03-20 - [UX] Absolute Paths for Global Navigation
 **Learning:** Using anchor-only links (e.g., `/#home`) in global navigation or "Back" links can lead to broken or inconsistent behavior when the user is on a sub-page (like `/about/`). Absolute paths (e.g., `/` or `/guides/`) ensure that navigation is robust and works predictably across the entire site.
 **Action:** Always prioritize absolute paths for site-wide navigation elements (header, footer, back links) to maintain a seamless user experience across different directory levels.
+
+## 2026-03-23 - [Engineering] Robust Batch HTML Processing
+**Learning:** When performing batch updates on legacy static HTML files, rely on pre-parsing regex to handle common structural errors (like unclosed tags) that standard parsers (e.g., BeautifulSoup) might "fix" by improperly nesting new elements. Additionally, synchronizing `Article` and `FAQPage` JSON-LD schema with on-page data is critical for maintaining "freshness" and E-E-A-T signals across search platforms.
+**Action:** Use regex to normalize HTML structure before parsing, and always ensure automated content updates extend to corresponding structured data blocks (JSON-LD) to maintain SEO consistency.

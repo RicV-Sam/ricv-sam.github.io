@@ -650,6 +650,69 @@ header {
     color: var(--muted);
 }
 
+.last-updated {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 8px 0 16px;
+    font-weight: 500;
+}
+
+.key-takeaways {
+    background: #fff;
+    border: 2px solid var(--primary-light);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(10, 77, 163, 0.05);
+}
+
+.key-takeaways h2 {
+    margin: 0 0 12px 0 !important;
+    font-size: 1.25rem !important;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.key-takeaways ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.key-takeaways li {
+    font-size: 0.95rem !important;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.key-takeaways li strong {
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cost-table {
+    margin: 24px 0 !important;
+}
+
+.experience-note {
+    font-style: italic;
+    font-size: 0.95rem !important;
+    color: var(--muted) !important;
+    padding: 12px 16px;
+    border-left: 4px solid var(--primary-light);
+    background: var(--surface-soft);
+    margin: 20px 0 !important;
+    border-radius: 0 8px 8px 0;
+}
+
 /* Quick Facts Table override */
 section.card table td {
     border: none;
