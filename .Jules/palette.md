@@ -29,3 +29,7 @@
 ## 2026-03-20 - [UX] Absolute Paths for Global Navigation
 **Learning:** Using anchor-only links (e.g., `/#home`) in global navigation or "Back" links can lead to broken or inconsistent behavior when the user is on a sub-page (like `/about/`). Absolute paths (e.g., `/` or `/guides/`) ensure that navigation is robust and works predictably across the entire site.
 **Action:** Always prioritize absolute paths for site-wide navigation elements (header, footer, back links) to maintain a seamless user experience across different directory levels.
+
+## 2026-03-21 - [UX] Actionable Empty States
+**Learning:** A passive "No results" message creates a "dead end" in the user journey. Adding a "Clear all filters" call-to-action (CTA) directly within the empty state provides an immediate recovery path, especially when multiple filter categories and search terms are active. Consistency in tactile feedback (e.g., `transform: scale(0.98)`) on these utility buttons maintains the site's high-quality feel.
+**Action:** When implementing filtering or search systems, always include an actionable reset button in the empty state that clears all inputs and filter selections to return the user to a default view.
