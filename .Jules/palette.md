@@ -33,3 +33,7 @@
 ## 2026-03-23 - [Engineering] Robust Batch HTML Processing
 **Learning:** When performing batch updates on legacy static HTML files, rely on pre-parsing regex to handle common structural errors (like unclosed tags) that standard parsers (e.g., BeautifulSoup) might "fix" by improperly nesting new elements. Additionally, synchronizing `Article` and `FAQPage` JSON-LD schema with on-page data is critical for maintaining "freshness" and E-E-A-T signals across search platforms.
 **Action:** Use regex to normalize HTML structure before parsing, and always ensure automated content updates extend to corresponding structured data blocks (JSON-LD) to maintain SEO consistency.
+
+## 2026-03-24 - [UX] Dead-End Recovery in Filtered Grids
+**Learning:** A "No results found" state in a filterable grid is a UX "dead end" that frustrates users. Providing a "Clear all filters" button within the empty state itself allows for immediate recovery without forcing the user to manually clear multiple inputs. Additionally, programmatically returning focus to the search input after a reset ensures a seamless experience for keyboard and screen reader users.
+**Action:** Always include a "Clear all filters" button in empty result states that resets both text and category filters, and use `.focus()` to return the user to the search input for their next attempt.

@@ -45,23 +45,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateNoResultsMessage(container, count) {
-        let messageElement = container.querySelector('.no-results');
-
-        if (count === 0) {
-            if (!messageElement) {
-                messageElement = document.createElement('div');
-                messageElement.className = 'no-results';
-                messageElement.setAttribute('role', 'alert');
-                messageElement.innerHTML = `
-                    <span class="no-results-icon" aria-hidden="true">🔍</span>
-                    <p>No guides found matching your criteria.</p>
-                    <span class="no-results-tip">Try adjusting your search or filters.</span>
-                `;
-                container.appendChild(messageElement);
-            }
-        } else if (messageElement) {
-            messageElement.remove();
-        }
+        let msg = container.querySelector('.no-results');
+        if (count === 0 && !msg) {
+            msg = document.createElement('div');
+            msg.className = 'no-results';
+            msg.setAttribute('role', 'alert');
+            msg.innerHTML = `<span class="no-results-icon" aria-hidden="true">🔍</span><p>No guides found matching your criteria.</p><button class="clear-filters-btn">Clear all filters</button><span class="no-results-tip">Try adjusting your search or filters.</span>`;
+            container.appendChild(msg);
+            msg.querySelector('.clear-filters-btn').addEventListener('click', () => {
+                if (searchInput) searchInput.value = '';
+                filterButtons.forEach(b => {
+                    const isAll = b.dataset.filter === 'all';
+                    b.classList.toggle('active', isAll);
+                    b.setAttribute('aria-selected', isAll);
+                });
+                filterGuides();
+                if (searchInput) searchInput.focus();
+            });
+        } else if (count > 0 && msg) msg.remove();
     }
 
     if (searchInput) {

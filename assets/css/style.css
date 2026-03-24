@@ -477,12 +477,17 @@ main {
 
 .no-results {
     grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 60px 24px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 20px;
     color: var(--muted);
+    box-shadow: var(--shadow);
 }
 
 .no-results-icon {
@@ -507,8 +512,30 @@ main {
 .no-results-tip {
     display: block;
     font-size: 0.9rem;
-    margin-top: 8px;
+    margin-top: 16px;
     color: var(--muted);
+}
+
+.clear-filters-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.clear-filters-btn:hover,
+.clear-filters-btn:focus-visible {
+    background: var(--primary-dark);
+}
+
+.clear-filters-btn:active {
+    transform: scale(0.98);
 }
 
 .guide-card.coming {
