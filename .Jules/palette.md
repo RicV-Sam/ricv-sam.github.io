@@ -33,3 +33,7 @@
 ## 2026-03-23 - [Engineering] Robust Batch HTML Processing
 **Learning:** When performing batch updates on legacy static HTML files, rely on pre-parsing regex to handle common structural errors (like unclosed tags) that standard parsers (e.g., BeautifulSoup) might "fix" by improperly nesting new elements. Additionally, synchronizing `Article` and `FAQPage` JSON-LD schema with on-page data is critical for maintaining "freshness" and E-E-A-T signals across search platforms.
 **Action:** Use regex to normalize HTML structure before parsing, and always ensure automated content updates extend to corresponding structured data blocks (JSON-LD) to maintain SEO consistency.
+
+## 2026-03-24 - [UX] Dynamic Element Lifecycle Management
+**Learning:** When dynamically injecting UI feedback elements (like a "No Results" message) based on state (e.g., search count), it is crucial to explicitly reset the reference variable (e.g., `messageElement = null;`) after removing the element from the DOM. Failing to do so can prevent the logic from re-triggering correctly if the state cycles through "results" back to "no results" within the same session.
+**Action:** Always set reference variables for dynamic UI components to `null` immediately after calling `.remove()` to ensure the component's lifecycle is correctly reset for subsequent interactions.
