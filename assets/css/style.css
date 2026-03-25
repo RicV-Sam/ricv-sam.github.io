@@ -511,6 +511,28 @@ main {
     color: var(--muted);
 }
 
+.clear-filters-btn {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 24px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.clear-filters-btn:hover,
+.clear-filters-btn:focus-visible {
+    background: var(--primary-dark);
+}
+
+.clear-filters-btn:active {
+    transform: scale(0.98);
+}
+
 .guide-card.coming {
     opacity: 0.6;
     cursor: default;
