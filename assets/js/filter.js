@@ -3,6 +3,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const guideCards = document.querySelectorAll('.guide-card');
 
+    // Initialize Clear Search Button
+    if (searchInput) {
+        const searchWrapper = searchInput.parentElement;
+        if (searchWrapper && searchWrapper.classList.contains('search-wrapper')) {
+            const clearBtn = document.createElement('button');
+            clearBtn.className = 'search-clear-btn';
+            clearBtn.setAttribute('aria-label', 'Clear search');
+            clearBtn.type = 'button';
+            clearBtn.innerHTML = '×';
+            clearBtn.style.display = 'none'; // Initial state
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                clearBtn.style.display = 'none';
+                searchInput.focus();
+                filterGuides();
+            });
+
+            searchWrapper.appendChild(clearBtn);
+
+            searchInput.addEventListener('input', () => {
+                clearBtn.style.display = searchInput.value ? 'block' : 'none';
+            });
+        }
+    }
+
     function filterGuides() {
         const searchTerm = searchInput.value.toLowerCase();
         const section = searchInput.closest('section');
@@ -85,6 +111,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         searchInput.addEventListener('input', filterGuides);
     }
+
+    // Support keyboard shortcut (/) to focus search
+    document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+            if (searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        }
+    });
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
