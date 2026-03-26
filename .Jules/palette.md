@@ -37,3 +37,7 @@
 ## 2026-03-24 - [UX] Dynamic Element Lifecycle Management
 **Learning:** When dynamically injecting UI feedback elements (like a "No Results" message) based on state (e.g., search count), it is crucial to explicitly reset the reference variable (e.g., `messageElement = null;`) after removing the element from the DOM. Failing to do so can prevent the logic from re-triggering correctly if the state cycles through "results" back to "no results" within the same session.
 **Action:** Always set reference variables for dynamic UI components to `null` immediately after calling `.remove()` to ensure the component's lifecycle is correctly reset for subsequent interactions.
+
+## 2026-03-25 - [UX] Keyboard-Friendly Search Reset
+**Learning:** When implementing a dynamic "Clear Search" button (`×`), it's essential to programmatically return focus to the search input after clearing the text. This ensures a seamless "reset-and-restart" flow for keyboard users and screen readers, preventing them from losing their place in the interactive document structure. Discovery is also improved by adding a keyboard shortcut hint (e.g., `[/]`) directly into the input's placeholder.
+**Action:** Always pair dynamic "Clear" or "Reset" actions with focus management that returns the user to the starting point of the interaction. Use visual cues like `[/]` to announce hidden keyboard shortcuts to all users.
