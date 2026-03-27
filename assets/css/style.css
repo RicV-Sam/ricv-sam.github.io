@@ -45,6 +45,18 @@ body {
     top: 12px;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .site-nav {
     position: sticky;
     top: 0;
@@ -221,7 +233,7 @@ main {
 
 .hero-cta:hover span,
 .hero-cta:focus-visible span {
-    transform: translateY(3px);
+    transform: translateX(5px);
 }
 
 @keyframes fadeInUp {
@@ -265,12 +277,36 @@ main {
 
 .search-wrapper input {
     width: 100%;
-    padding: 16px 24px 16px 50px;
+    padding: 16px 50px 16px 50px;
     border-radius: 999px;
     border: 1px solid var(--border);
     font-size: 1.1rem;
     box-shadow: var(--shadow);
     transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-clear-btn {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.search-clear-btn:hover {
+    color: var(--text);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.search-clear-btn:active {
+    transform: translateY(-50%) scale(0.9);
 }
 
 .search-wrapper input:focus {
@@ -477,16 +513,17 @@ main {
 
 .no-results {
     grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 60px 24px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 20px;
     color: var(--muted);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+    box-shadow: var(--shadow);
 }
 
 .no-results-icon {
@@ -511,29 +548,26 @@ main {
 .no-results-tip {
     display: block;
     font-size: 0.9rem;
+    margin-top: 16px;
     color: var(--muted);
 }
 
 .clear-filters-btn {
+    display: inline-block;
     margin-top: 16px;
-    padding: 12px 24px;
+    padding: 10px 24px;
     background: var(--primary);
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 999px;
     font-weight: 700;
-    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: background 0.2s, transform 0.2s;
 }
 
-.clear-filters-btn:hover {
-    background: var(--primary-dark);
-}
-
+.clear-filters-btn:hover,
 .clear-filters-btn:focus-visible {
-    outline: 3px solid #ffcd47;
-    outline-offset: 4px;
+    background: var(--primary-dark);
 }
 
 .clear-filters-btn:active {
@@ -677,6 +711,69 @@ header {
 .card td:first-child {
     font-weight: 600;
     color: var(--muted);
+}
+
+.last-updated {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 8px 0 16px;
+    font-weight: 500;
+}
+
+.key-takeaways {
+    background: #fff;
+    border: 2px solid var(--primary-light);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(10, 77, 163, 0.05);
+}
+
+.key-takeaways h2 {
+    margin: 0 0 12px 0 !important;
+    font-size: 1.25rem !important;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.key-takeaways ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.key-takeaways li {
+    font-size: 0.95rem !important;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.key-takeaways li strong {
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cost-table {
+    margin: 24px 0 !important;
+}
+
+.experience-note {
+    font-style: italic;
+    font-size: 0.95rem !important;
+    color: var(--muted) !important;
+    padding: 12px 16px;
+    border-left: 4px solid var(--primary-light);
+    background: var(--surface-soft);
+    margin: 20px 0 !important;
+    border-radius: 0 8px 8px 0;
 }
 
 /* Quick Facts Table override */

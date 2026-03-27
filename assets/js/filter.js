@@ -3,6 +3,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const guideCards = document.querySelectorAll('.guide-card');
 
+    // Initialize Clear Search Button
+    if (searchInput) {
+        const searchWrapper = searchInput.parentElement;
+        if (searchWrapper && searchWrapper.classList.contains('search-wrapper')) {
+            const clearBtn = document.createElement('button');
+            clearBtn.className = 'search-clear-btn';
+            clearBtn.setAttribute('aria-label', 'Clear search');
+            clearBtn.type = 'button';
+            clearBtn.innerHTML = '×';
+            clearBtn.style.display = 'none'; // Initial state
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                clearBtn.style.display = 'none';
+                searchInput.focus();
+                filterGuides();
+            });
+
+            searchWrapper.appendChild(clearBtn);
+
+            searchInput.addEventListener('input', () => {
+                clearBtn.style.display = searchInput.value ? 'block' : 'none';
+            });
+
+            // Initialize ARIA live announcer for search results
+            const announcer = document.createElement('div');
+            announcer.id = 'search-results-announcer';
+            announcer.className = 'visually-hidden';
+            announcer.setAttribute('aria-live', 'polite');
+            searchWrapper.appendChild(announcer);
+        }
+    }
+
     function filterGuides() {
         const searchTerm = searchInput.value.toLowerCase();
         const section = searchInput.closest('section');
@@ -42,6 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         updateNoResultsMessage(grid, visibleCount);
+
+        // Update ARIA live announcer with results count
+        const announcer = document.getElementById('search-results-announcer');
+        if (announcer) {
+            announcer.textContent = visibleCount === 0
+                ? 'No guides found matching your criteria.'
+                : `${visibleCount} guide${visibleCount === 1 ? '' : 's'} found.`;
+        }
     }
 
     function updateNoResultsMessage(container, count) {
@@ -56,8 +97,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="no-results-icon" aria-hidden="true">🔍</span>
                     <p>No guides found matching your criteria.</p>
                     <span class="no-results-tip">Try adjusting your search or filters.</span>
-                    <button class="clear-filters-btn">Clear all filters</button>
+                    <button class="clear-filters-btn" aria-label="Clear all search and region filters">Clear all filters</button>
                 `;
+
+                const clearBtn = messageElement.querySelector('.clear-filters-btn');
+                clearBtn.addEventListener('click', () => {
+                    if (searchInput) {
+                        searchInput.value = '';
+                        searchInput.focus();
+                    }
+
+                    const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+                    if (allBtn) {
+                        allBtn.click();
+                    } else {
+                        filterGuides();
+                    }
+                });
+
                 container.appendChild(messageElement);
 
                 const clearBtn = messageElement.querySelector('.clear-filters-btn');
@@ -79,12 +136,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else if (messageElement) {
             messageElement.remove();
+        messageElement = null;
         }
     }
 
     if (searchInput) {
         searchInput.addEventListener('input', filterGuides);
+
+        // Support Escape key to clear search
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchInput.value = '';
+            const wrapper = searchInput.closest('.search-wrapper');
+            const clearBtn = wrapper ? wrapper.querySelector('.search-clear-btn') : null;
+                if (clearBtn) clearBtn.style.display = 'none';
+                filterGuides();
+            }
+        });
     }
+
+    // Support keyboard shortcut (/) to focus search
+    document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+            if (searchInput) {
+                e.preventDefault();
+                searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                searchInput.focus();
+            }
+        }
+    });
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {

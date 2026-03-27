@@ -30,6 +30,18 @@
 **Learning:** Using anchor-only links (e.g., `/#home`) in global navigation or "Back" links can lead to broken or inconsistent behavior when the user is on a sub-page (like `/about/`). Absolute paths (e.g., `/` or `/guides/`) ensure that navigation is robust and works predictably across the entire site.
 **Action:** Always prioritize absolute paths for site-wide navigation elements (header, footer, back links) to maintain a seamless user experience across different directory levels.
 
-## 2026-03-21 - [UX] Actionable Empty States
-**Learning:** A passive "No results" message creates a "dead end" in the user journey. Adding a "Clear all filters" call-to-action (CTA) directly within the empty state provides an immediate recovery path, especially when multiple filter categories and search terms are active. Consistency in tactile feedback (e.g., `transform: scale(0.98)`) on these utility buttons maintains the site's high-quality feel.
-**Action:** When implementing filtering or search systems, always include an actionable reset button in the empty state that clears all inputs and filter selections to return the user to a default view.
+## 2026-03-23 - [Engineering] Robust Batch HTML Processing
+**Learning:** When performing batch updates on legacy static HTML files, rely on pre-parsing regex to handle common structural errors (like unclosed tags) that standard parsers (e.g., BeautifulSoup) might "fix" by improperly nesting new elements. Additionally, synchronizing `Article` and `FAQPage` JSON-LD schema with on-page data is critical for maintaining "freshness" and E-E-A-T signals across search platforms.
+**Action:** Use regex to normalize HTML structure before parsing, and always ensure automated content updates extend to corresponding structured data blocks (JSON-LD) to maintain SEO consistency.
+
+## 2026-03-24 - [UX] Dynamic Element Lifecycle Management
+**Learning:** When dynamically injecting UI feedback elements (like a "No Results" message) based on state (e.g., search count), it is crucial to explicitly reset the reference variable (e.g., `messageElement = null;`) after removing the element from the DOM. Failing to do so can prevent the logic from re-triggering correctly if the state cycles through "results" back to "no results" within the same session.
+**Action:** Always set reference variables for dynamic UI components to `null` immediately after calling `.remove()` to ensure the component's lifecycle is correctly reset for subsequent interactions.
+
+## 2026-03-25 - [UX] Keyboard-Friendly Search Reset
+**Learning:** When implementing a dynamic "Clear Search" button (`×`), it's essential to programmatically return focus to the search input after clearing the text. This ensures a seamless "reset-and-restart" flow for keyboard users and screen readers, preventing them from losing their place in the interactive document structure. Discovery is also improved by adding a keyboard shortcut hint (e.g., `[/]`) directly into the input's placeholder.
+**Action:** Always pair dynamic "Clear" or "Reset" actions with focus management that returns the user to the starting point of the interaction. Use visual cues like `[/]` to announce hidden keyboard shortcuts to all users.
+
+## 2026-03-26 - [Accessibility] Real-time Search Feedback
+**Learning:** Sighted users see search results update instantly, but screen reader users are often left in the dark without an `aria-live` region. Additionally, keyboard shortcuts (like `/` for focus) should always ensure the target is visible via `scrollIntoView` to avoid "focusing into the void" on long pages or mobile.
+**Action:** Implement an `aria-live="polite"` announcer for all dynamic search/filter interfaces to report result counts. Pair focus-shifting shortcuts with smooth scrolling to maintain visual context.
