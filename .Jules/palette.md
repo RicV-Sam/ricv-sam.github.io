@@ -34,6 +34,14 @@
 **Learning:** When performing batch updates on legacy static HTML files, rely on pre-parsing regex to handle common structural errors (like unclosed tags) that standard parsers (e.g., BeautifulSoup) might "fix" by improperly nesting new elements. Additionally, synchronizing `Article` and `FAQPage` JSON-LD schema with on-page data is critical for maintaining "freshness" and E-E-A-T signals across search platforms.
 **Action:** Use regex to normalize HTML structure before parsing, and always ensure automated content updates extend to corresponding structured data blocks (JSON-LD) to maintain SEO consistency.
 
-## 2026-03-24 - [UX] Dead-End Recovery in Filtered Grids
-**Learning:** A "No results found" state in a filterable grid is a UX "dead end" that frustrates users. Providing a "Clear all filters" button within the empty state itself allows for immediate recovery without forcing the user to manually clear multiple inputs. Additionally, programmatically returning focus to the search input after a reset ensures a seamless experience for keyboard and screen reader users.
-**Action:** Always include a "Clear all filters" button in empty result states that resets both text and category filters, and use `.focus()` to return the user to the search input for their next attempt.
+## 2026-03-24 - [UX] Dynamic Element Lifecycle Management
+**Learning:** When dynamically injecting UI feedback elements (like a "No Results" message) based on state (e.g., search count), it is crucial to explicitly reset the reference variable (e.g., `messageElement = null;`) after removing the element from the DOM. Failing to do so can prevent the logic from re-triggering correctly if the state cycles through "results" back to "no results" within the same session.
+**Action:** Always set reference variables for dynamic UI components to `null` immediately after calling `.remove()` to ensure the component's lifecycle is correctly reset for subsequent interactions.
+
+## 2026-03-25 - [UX] Keyboard-Friendly Search Reset
+**Learning:** When implementing a dynamic "Clear Search" button (`×`), it's essential to programmatically return focus to the search input after clearing the text. This ensures a seamless "reset-and-restart" flow for keyboard users and screen readers, preventing them from losing their place in the interactive document structure. Discovery is also improved by adding a keyboard shortcut hint (e.g., `[/]`) directly into the input's placeholder.
+**Action:** Always pair dynamic "Clear" or "Reset" actions with focus management that returns the user to the starting point of the interaction. Use visual cues like `[/]` to announce hidden keyboard shortcuts to all users.
+
+## 2026-03-26 - [Accessibility] Real-time Search Feedback
+**Learning:** Sighted users see search results update instantly, but screen reader users are often left in the dark without an `aria-live` region. Additionally, keyboard shortcuts (like `/` for focus) should always ensure the target is visible via `scrollIntoView` to avoid "focusing into the void" on long pages or mobile.
+**Action:** Implement an `aria-live="polite"` announcer for all dynamic search/filter interfaces to report result counts. Pair focus-shifting shortcuts with smooth scrolling to maintain visual context.
