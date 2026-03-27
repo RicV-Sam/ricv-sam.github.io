@@ -26,6 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
             searchInput.addEventListener('input', () => {
                 clearBtn.style.display = searchInput.value ? 'block' : 'none';
             });
+
+            // Initialize ARIA live announcer for search results
+            const announcer = document.createElement('div');
+            announcer.id = 'search-results-announcer';
+            announcer.className = 'visually-hidden';
+            announcer.setAttribute('aria-live', 'polite');
+            searchWrapper.appendChild(announcer);
         }
     }
 
@@ -68,6 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         updateNoResultsMessage(grid, visibleCount);
+
+        // Update ARIA live announcer with results count
+        const announcer = document.getElementById('search-results-announcer');
+        if (announcer) {
+            announcer.textContent = visibleCount === 0
+                ? 'No guides found matching your criteria.'
+                : `${visibleCount} guide${visibleCount === 1 ? '' : 's'} found.`;
+        }
     }
 
     function updateNoResultsMessage(container, count) {
@@ -110,6 +125,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (searchInput) {
         searchInput.addEventListener('input', filterGuides);
+
+        // Support Escape key to clear search
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchInput.value = '';
+            const wrapper = searchInput.closest('.search-wrapper');
+            const clearBtn = wrapper ? wrapper.querySelector('.search-clear-btn') : null;
+                if (clearBtn) clearBtn.style.display = 'none';
+                filterGuides();
+            }
+        });
     }
 
     // Support keyboard shortcut (/) to focus search
@@ -117,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
             if (searchInput) {
                 e.preventDefault();
+                searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 searchInput.focus();
             }
         }
