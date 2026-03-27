@@ -116,6 +116,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 container.appendChild(messageElement);
+
+                const clearBtn = messageElement.querySelector('.clear-filters-btn');
+                clearBtn.addEventListener('click', () => {
+                    if (searchInput) searchInput.value = '';
+
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        if (btn.dataset.filter === 'all') {
+                            btn.classList.add('active');
+                            btn.setAttribute('aria-selected', 'true');
+                        } else {
+                            btn.classList.remove('active');
+                            btn.setAttribute('aria-selected', 'false');
+                        }
+                    });
+
+                    filterGuides();
+                });
             }
         } else if (messageElement) {
             messageElement.remove();
