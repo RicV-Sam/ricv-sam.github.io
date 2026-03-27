@@ -41,3 +41,7 @@
 ## 2026-03-25 - [UX] Keyboard-Friendly Search Reset
 **Learning:** When implementing a dynamic "Clear Search" button (`×`), it's essential to programmatically return focus to the search input after clearing the text. This ensures a seamless "reset-and-restart" flow for keyboard users and screen readers, preventing them from losing their place in the interactive document structure. Discovery is also improved by adding a keyboard shortcut hint (e.g., `[/]`) directly into the input's placeholder.
 **Action:** Always pair dynamic "Clear" or "Reset" actions with focus management that returns the user to the starting point of the interaction. Use visual cues like `[/]` to announce hidden keyboard shortcuts to all users.
+
+## 2026-03-26 - [Accessibility] Real-time Search Feedback
+**Learning:** Sighted users see search results update instantly, but screen reader users are often left in the dark without an `aria-live` region. Additionally, keyboard shortcuts (like `/` for focus) should always ensure the target is visible via `scrollIntoView` to avoid "focusing into the void" on long pages or mobile.
+**Action:** Implement an `aria-live="polite"` announcer for all dynamic search/filter interfaces to report result counts. Pair focus-shifting shortcuts with smooth scrolling to maintain visual context.
