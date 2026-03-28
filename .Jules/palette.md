@@ -45,3 +45,7 @@
 ## 2026-03-26 - [Accessibility] Real-time Search Feedback
 **Learning:** Sighted users see search results update instantly, but screen reader users are often left in the dark without an `aria-live` region. Additionally, keyboard shortcuts (like `/` for focus) should always ensure the target is visible via `scrollIntoView` to avoid "focusing into the void" on long pages or mobile.
 **Action:** Implement an `aria-live="polite"` announcer for all dynamic search/filter interfaces to report result counts. Pair focus-shifting shortcuts with smooth scrolling to maintain visual context.
+
+## 2026-03-27 - [UX] Consolidating Filter Reset and Focus Transitions
+**Learning:** When a user "resets" or "clears" a filter set that yielded no results, they are essentially signaling a desire to "start over" with a different query. Automatically returning focus to the search input after clearing filters removes a friction point. Additionally, providing subtle visual feedback (like scaling an icon) when a wrapper gains focus (using `:focus-within`) creates a more "alive" and responsive feel for standard input fields.
+**Action:** Always return focus to the primary search/filter input after a "Clear All" or "Reset" action. Use `:focus-within` to apply delightful transitions to decorative elements (icons, borders) that are technically outside the input but part of the same visual component.
