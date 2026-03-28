@@ -104,35 +104,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearBtn.addEventListener('click', () => {
                     if (searchInput) {
                         searchInput.value = '';
+                        const wrapper = searchInput.closest('.search-wrapper');
+                        const searchClearBtn = wrapper ? wrapper.querySelector('.search-clear-btn') : null;
+                        if (searchClearBtn) searchClearBtn.style.display = 'none';
                         searchInput.focus();
                     }
 
-                    const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
-                    if (allBtn) {
-                        allBtn.click();
-                    } else {
-                        filterGuides();
-                    }
-                });
-
-                container.appendChild(messageElement);
-
-                const clearBtn = messageElement.querySelector('.clear-filters-btn');
-                clearBtn.addEventListener('click', () => {
-                    if (searchInput) searchInput.value = '';
-
                     document.querySelectorAll('.filter-btn').forEach(btn => {
-                        if (btn.dataset.filter === 'all') {
-                            btn.classList.add('active');
-                            btn.setAttribute('aria-selected', 'true');
-                        } else {
-                            btn.classList.remove('active');
-                            btn.setAttribute('aria-selected', 'false');
-                        }
+                        const isAll = btn.dataset.filter === 'all';
+                        btn.classList.toggle('active', isAll);
+                        btn.setAttribute('aria-selected', isAll ? 'true' : 'false');
                     });
 
                     filterGuides();
                 });
+
+                container.appendChild(messageElement);
             }
         } else if (messageElement) {
             messageElement.remove();
