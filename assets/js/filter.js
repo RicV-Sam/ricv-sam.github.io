@@ -3,6 +3,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const guideCards = document.querySelectorAll('.guide-card');
 
+    // Initialize Reading Progress Bar
+    const siteNav = document.querySelector('.site-nav');
+    if (siteNav) {
+        const progressContainer = document.createElement('div');
+        progressContainer.className = 'reading-progress-container';
+
+        const progressBar = document.createElement('div');
+        progressBar.className = 'reading-progress-bar';
+        progressBar.setAttribute('role', 'progressbar');
+        progressBar.setAttribute('aria-label', 'Reading progress');
+        progressBar.setAttribute('aria-valuenow', '0');
+        progressBar.setAttribute('aria-valuemin', '0');
+        progressBar.setAttribute('aria-valuemax', '100');
+
+        progressContainer.appendChild(progressBar);
+        siteNav.appendChild(progressContainer);
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+                    progressBar.style.width = scrolled + '%';
+                    progressBar.setAttribute('aria-valuenow', Math.round(scrolled).toString());
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+
     // Initialize Clear Search Button
     if (searchInput) {
         const searchWrapper = searchInput.parentElement;
