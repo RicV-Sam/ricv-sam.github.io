@@ -49,3 +49,7 @@
 ## 2026-03-27 - [UX] Consolidating Filter Reset and Focus Transitions
 **Learning:** When a user "resets" or "clears" a filter set that yielded no results, they are essentially signaling a desire to "start over" with a different query. Automatically returning focus to the search input after clearing filters removes a friction point. Additionally, providing subtle visual feedback (like scaling an icon) when a wrapper gains focus (using `:focus-within`) creates a more "alive" and responsive feel for standard input fields.
 **Action:** Always return focus to the primary search/filter input after a "Clear All" or "Reset" action. Use `:focus-within` to apply delightful transitions to decorative elements (icons, borders) that are technically outside the input but part of the same visual component.
+
+## 2026-03-28 - [UX] Reading Progress Bar Performance and Accessibility
+**Learning:** Implementing a reading progress bar on a content-heavy site provides excellent feedback for long-form guides. To maintain high performance, scroll listeners should be throttled using `requestAnimationFrame`. For accessibility, the progress bar should be part of a meaningful landmark (like the sticky header) and include standard ARIA attributes (`role="progressbar"`, `aria-valuenow`) so screen readers can communicate the depth of content reached.
+**Action:** Always use `requestAnimationFrame` for scroll-based UI updates and ensure visual progress indicators are accompanied by the correct ARIA attributes for screen reader parity.
