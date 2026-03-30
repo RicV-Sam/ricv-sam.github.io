@@ -176,14 +176,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         searchInput.addEventListener('input', filterGuides);
 
-        // Support Escape key to clear search
+        // Support Escape key to clear search or blur if empty
         searchInput.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                searchInput.value = '';
-            const wrapper = searchInput.closest('.search-wrapper');
-            const clearBtn = wrapper ? wrapper.querySelector('.search-clear-btn') : null;
-                if (clearBtn) clearBtn.style.display = 'none';
-                filterGuides();
+                if (searchInput.value === '') {
+                    searchInput.blur();
+                } else {
+                    searchInput.value = '';
+                    const wrapper = searchInput.closest('.search-wrapper');
+                    const clearBtn = wrapper ? wrapper.querySelector('.search-clear-btn') : null;
+                    if (clearBtn) clearBtn.style.display = 'none';
+                    filterGuides();
+                }
             }
         });
     }
