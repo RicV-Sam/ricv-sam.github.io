@@ -585,6 +585,21 @@ main {
     color: var(--muted);
 }
 
+.results-status {
+    text-align: center;
+    margin: 1rem 0;
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 0.95rem;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    min-height: 1.5em;
+}
+
+.results-status.visible {
+    opacity: 1;
+}
+
 .clear-filters-btn {
     display: inline-block;
     margin-top: 16px;

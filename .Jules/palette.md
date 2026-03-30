@@ -57,3 +57,7 @@
 ## 2026-03-29 - [UX] Stable Micro-interactions vs. Layout Shift
 **Learning:** When adding hover or focus transitions to interactive elements (like CTA links with arrows), shifting the entire container can cause "text jumping" which feels unstable and unprofessional. Decoupling the decorative movement (the arrow) from the semantic text by wrapping the arrow in a `span` and transforming only that `span` provides a much smoother, polished feel without affecting the layout.
 **Action:** Always wrap decorative symbols or arrows in a `<span>` and apply transforms only to the span on parent hover/focus. Pair with a smooth transition for any layout-affecting properties like `top` for skip-links.
+
+## 2026-03-30 - [UX] Visual Feedback for Search Count and Filtering
+**Learning:** While `aria-live` regions provide feedback to screen readers, sighted users also benefit from a dedicated visual status indicator (e.g., "Showing X guides") that updates in real-time during filtering. To prevent jarring layout shifts when the count appears or changes, use a stable container with a fixed `min-height`. Furthermore, in complex filtering UIs with multiple categories, each category should include an "All" or "Reset" option to allow users to clear a single criteria without resetting the entire search.
+**Action:** Always pair `aria-live` announcers with a visually consistent results-status element. Apply `min-height` or similar layout-stability techniques to containers for dynamic text, and ensure every filter group has a clear "All" option.

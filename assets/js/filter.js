@@ -109,6 +109,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateNoResultsMessage(grid, visibleCount);
 
+        // Update visible results status
+        const resultsStatus = section.querySelector('.results-status');
+        if (resultsStatus) {
+            const hasActiveFilter = activeFilters.some(f => f !== 'all');
+            if (searchTerm || hasActiveFilter) {
+                resultsStatus.textContent = `Showing ${visibleCount} guide${visibleCount === 1 ? '' : 's'}`;
+                resultsStatus.classList.add('visible');
+            } else {
+                resultsStatus.textContent = '';
+                resultsStatus.classList.remove('visible');
+            }
+        }
+
         // Update ARIA live announcer with results count
         const announcer = document.getElementById('search-results-announcer');
         if (announcer) {
