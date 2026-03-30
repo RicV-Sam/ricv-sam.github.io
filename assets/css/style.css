@@ -39,6 +39,7 @@ body {
     border-radius: 8px;
     text-decoration: none;
     z-index: 1000;
+    transition: top 0.2s ease-in-out;
 }
 
 .skip-link:focus {
@@ -476,13 +477,22 @@ main {
     color: var(--primary);
     font-weight: 600;
     font-size: 1.1rem;
-    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+}
+
+.guide-card-cta span {
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
 }
 
 .guide-card:hover .guide-card-cta,
 .guide-card:focus-visible .guide-card-cta {
-    transform: translateX(5px);
     color: var(--primary-dark);
+}
+
+.guide-card:hover .guide-card-cta span,
+.guide-card:focus-visible .guide-card-cta span {
+    transform: translateX(5px);
 }
 
 .guide-card-icon {
@@ -888,14 +898,23 @@ section.card table td:last-child {
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
+.back-link span {
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+}
+
 .back-link:hover,
 .back-link:focus-visible {
     color: var(--primary-dark);
+}
+
+.back-link:hover span,
+.back-link:focus-visible span {
     transform: translateX(-5px);
 }
 
 .back-link:active {
-    transform: translateX(-5px) scale(0.98);
+    transform: scale(0.98);
 }
 
 .site-footer {
