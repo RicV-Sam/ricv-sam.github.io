@@ -53,3 +53,7 @@
 ## 2026-03-28 - [UX] Reading Progress Bar Performance and Accessibility
 **Learning:** Implementing a reading progress bar on a content-heavy site provides excellent feedback for long-form guides. To maintain high performance, scroll listeners should be throttled using `requestAnimationFrame`. For accessibility, the progress bar should be part of a meaningful landmark (like the sticky header) and include standard ARIA attributes (`role="progressbar"`, `aria-valuenow`) so screen readers can communicate the depth of content reached.
 **Action:** Always use `requestAnimationFrame` for scroll-based UI updates and ensure visual progress indicators are accompanied by the correct ARIA attributes for screen reader parity.
+
+## 2026-03-29 - [UX] Stable Micro-interactions vs. Layout Shift
+**Learning:** When adding hover or focus transitions to interactive elements (like CTA links with arrows), shifting the entire container can cause "text jumping" which feels unstable and unprofessional. Decoupling the decorative movement (the arrow) from the semantic text by wrapping the arrow in a `span` and transforming only that `span` provides a much smoother, polished feel without affecting the layout.
+**Action:** Always wrap decorative symbols or arrows in a `<span>` and apply transforms only to the span on parent hover/focus. Pair with a smooth transition for any layout-affecting properties like `top` for skip-links.
