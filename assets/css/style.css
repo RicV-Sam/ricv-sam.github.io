@@ -1106,7 +1106,8 @@ section.card table td:last-child {
     visibility: visible;
 }
 
-.scroll-top:hover {
+.scroll-top:hover,
+.scroll-top:focus-visible {
     background: var(--primary-dark);
     transform: translateY(-4px);
 }
