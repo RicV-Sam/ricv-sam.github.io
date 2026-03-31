@@ -6,6 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Reading Progress Bar
     const siteNav = document.querySelector('.site-nav');
     if (siteNav) {
+        // Initialize Scroll to Top Button
+        const scrollTopBtn = document.createElement('button');
+        scrollTopBtn.className = 'scroll-top';
+        scrollTopBtn.setAttribute('aria-label', 'Scroll to top');
+        scrollTopBtn.innerHTML = '<span aria-hidden="true">↑</span>';
+        document.body.appendChild(scrollTopBtn);
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const skipLink = document.querySelector('.skip-link');
+            if (skipLink) skipLink.focus();
+        });
+
         const progressContainer = document.createElement('div');
         progressContainer.className = 'reading-progress-container';
 
@@ -29,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
                     progressBar.style.width = scrolled + '%';
                     progressBar.setAttribute('aria-valuenow', Math.round(scrolled).toString());
+                    scrollTopBtn.classList.toggle('visible', winScroll > 400);
                     ticking = false;
                 });
                 ticking = true;
