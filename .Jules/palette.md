@@ -65,3 +65,7 @@
 ## 2026-04-01 - [UX] Progressive Enhancement for Social Sharing
 **Learning:** When adding social features like a "Share" button to static content pages, using the Web Share API (`navigator.share`) provides the best native experience on mobile, while a clipboard fallback ensures utility on desktop. Providing immediate visual feedback (e.g., changing button text to "Copied!") for the fallback is crucial for confirming the action in the absence of a native system dialog.
 **Action:** Implement sharing features with progressive enhancement, prioritizing native APIs and always providing a robust, feedback-oriented fallback for desktop users.
+
+## 2026-04-01 - [Engineering] Localized Micro-UX Implementation
+**Learning:** To maintain a clean codebase and respect the 50-line limit for Palette micro-UX improvements in a project with independent static pages, page-specific logic should be implemented locally within the relevant HTML file via `<script>` and inline styles. Reusing existing functional classes (like `.filter-btn`) ensures design consistency without adding new CSS tokens to the global stylesheet.
+**Action:** Prioritize localized implementation and class reuse for page-specific features to avoid global asset pollution and maintain strict line-count constraints.
