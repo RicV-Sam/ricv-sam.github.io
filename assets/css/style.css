@@ -1115,3 +1115,45 @@ section.card table td:last-child {
 .scroll-top:active {
     transform: scale(0.95);
 }
+
+/* Affiliate CTA Blocks */
+.affiliate-cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 2rem 0;
+}
+
+.affiliate-cta-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.affiliate-cta-box:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+    border-color: var(--primary);
+}
+
+.affiliate-cta-icon {
+    font-size: 1.5rem;
+}
+
+.affiliate-cta-label {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.affiliate-cta-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
