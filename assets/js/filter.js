@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const resultsStatus = section.querySelector('.results-status');
         if (resultsStatus) {
             const hasActiveFilter = activeFilters.some(f => f !== 'all');
-            if (searchTerm || hasActiveFilter) {
+            if ((searchTerm || hasActiveFilter) && visibleCount > 0) {
                 resultsStatus.textContent = `Showing ${visibleCount} guide${visibleCount === 1 ? '' : 's'}`;
                 resultsStatus.classList.add('visible');
             } else {
@@ -259,4 +259,44 @@ document.addEventListener('DOMContentLoaded', () => {
             buttons[nextIndex].focus();
         });
     });
+
+    initShareButton();
 });
+
+function initShareButton() {
+    const metaContainer = document.querySelector('.article-layout .meta, .article-layout .last-updated');
+    if (!metaContainer) return;
+
+    const shareBtn = document.createElement('button');
+    shareBtn.className = 'filter-btn share-btn';
+    shareBtn.style.marginLeft = '12px';
+    shareBtn.style.padding = '6px 14px';
+    shareBtn.style.fontSize = '0.85rem';
+    shareBtn.innerHTML = '<span aria-hidden="true" style="margin-right: 6px;">🔗</span> Share Guide';
+
+    shareBtn.addEventListener('click', async () => {
+        const shareData = {
+            title: document.title,
+            url: window.location.href
+        };
+
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                await navigator.clipboard.writeText(window.location.href);
+                const originalText = shareBtn.innerHTML;
+                shareBtn.innerHTML = '<span aria-hidden="true" style="margin-right: 6px;">✅</span> Copied!';
+                shareBtn.classList.add('active');
+                setTimeout(() => {
+                    shareBtn.innerHTML = originalText;
+                    shareBtn.classList.remove('active');
+                }, 2000);
+            }
+        } catch (err) {
+            console.log('Share failed:', err);
+        }
+    });
+
+    metaContainer.appendChild(shareBtn);
+}
