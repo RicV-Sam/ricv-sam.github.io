@@ -61,3 +61,7 @@
 ## 2026-03-30 - [UX] Visual Feedback for Search Count and Filtering
 **Learning:** While `aria-live` regions provide feedback to screen readers, sighted users also benefit from a dedicated visual status indicator (e.g., "Showing X guides") that updates in real-time during filtering. To prevent jarring layout shifts when the count appears or changes, use a stable container with a fixed `min-height`. Furthermore, in complex filtering UIs with multiple categories, each category should include an "All" or "Reset" option to allow users to clear a single criteria without resetting the entire search.
 **Action:** Always pair `aria-live` announcers with a visually consistent results-status element. Apply `min-height` or similar layout-stability techniques to containers for dynamic text, and ensure every filter group has a clear "All" option.
+
+## 2026-04-01 - [UX] Progressive Enhancement for Social Sharing
+**Learning:** When adding social features like a "Share" button to static content pages, using the Web Share API (`navigator.share`) provides the best native experience on mobile, while a clipboard fallback ensures utility on desktop. Providing immediate visual feedback (e.g., changing button text to "Copied!") for the fallback is crucial for confirming the action in the absence of a native system dialog.
+**Action:** Implement sharing features with progressive enhancement, prioritizing native APIs and always providing a robust, feedback-oriented fallback for desktop users.
