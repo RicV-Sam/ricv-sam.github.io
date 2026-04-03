@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://budgetholidayshub.com/sitemap.xml
